@@ -8,7 +8,7 @@
   <body>
     <label for="station-select">Select a Luas Station:</label>
     <select id="station-select">
-      <option value="DOM">Dominick</option>
+      <option value="DOM" name="Dominick">Dominick</option>
       <option value="MAR">Marlborough</option>
       <option value="JER">Jervis</option>
       <option value="ABB">Abbey Street</option>
@@ -38,7 +38,7 @@
             var destination = direction.find("destination").first().text();
             var dueMins = direction.find("dueMins").first().text();
             
-            var info = "<p>The next Luas from " + station + " to " + destination + " is in " + dueMins + " minutes.</p>";
+            var info = "<p>The next Luas from " + stationFull + " to " + destination + " is in " + dueMins + " minutes.</p>";
             $("#result").html(info);
           })
           .catch(error => console.log(error));
