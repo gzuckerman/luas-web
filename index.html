@@ -25,7 +25,7 @@
       $(document).ready(function() {
         $("#submit-btn").click(function() {
           var station = $("#station-select").val();
-          var stationFull = $("#station-select").option();
+          var stationFull = $("#station-select");
           var url = "https://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=" + station + "&encrypt=false";
           
           fetch(url, {
