@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Luas Station Information</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <label for="station-select">Select a Luas Station:</label>
+    <select id="station-select">
+      <option value="DOM">Dominick</option>
+      <option value="MAR">Marlborough</option>
+      <option value="JER">Jervis</option>
+      <option value="ABB">Abbey Street</option>
+      <option value="STS">St. Stephen's Green</option>
+      <option value="HAR">Harcourt</option>
+      <option value="BRO">Broombridge</option>
+      <option value="CAB">Cabra</option>
+      <option value="PHI">Phibsborough</option>
+    </select>
+    <button id="submit-btn">Get Station Info</button>
+    <div id="result"></div>
+    
+    <script>
+      $(document).ready(function() {
+        $("#submit-btn").click(function() {
+          var station = $("#station-select").val();
+          var url = "http://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=" + station + "&encrypt=false";
+          
+          fetch(url, {
+            mode: 'no-cors'
+          })
+          .then(response => response.text())
+          .then(data => {
+            var xml = $(data);
+            var direction = xml.find("direction").first();
+            var destination = direction.find("destination").first().text();
+            var dueMins = direction.find("dueMins").first().text();
+            
+            var info = "<p>Next Luas from " + station + " to " + destination + " in " + dueMins + " minutes</p>";
+            $("#result").html(info);
+          })
+          .catch(error => console.log(error));
+        });
+      });
+    </script>
+  </body>
+</html>
