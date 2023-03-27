@@ -8,7 +8,7 @@
   <body>
     <label for="station-select">Select a Luas Station:</label>
     <select id="station-select">
-      <option value="DOM" name="Dominick">Dominick</option>
+      <option value="DOM" label="Dominick">Dominick</option>
       <option value="MAR">Marlborough</option>
       <option value="JER">Jervis</option>
       <option value="ABB">Abbey Street</option>
@@ -25,7 +25,7 @@
       $(document).ready(function() {
         $("#submit-btn").click(function() {
           var station = $("#station-select").val();
-          var stationFull = $("#station-select").val();
+          var stationFull = $("#station-select").label();
           var url = "https://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=" + station + "&encrypt=false";
           
           fetch(url, {
