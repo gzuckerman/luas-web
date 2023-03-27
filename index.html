@@ -33,11 +33,11 @@
           .then(response => response.text())
           .then(data => {
             var xml = $(data);
-            var direction = xml.find("direction").first();
+            var direction = xml.find("direction");
             var destination = direction.find("destination").first().text();
             var dueMins = direction.find("dueMins").first().text();
             
-            var info = "<p>Next Luas from " + station + " to " + destination + " in " + dueMins + " minutes</p>";
+            var info = "<p>The next Luas from " + station + " to " + destination + " is in " + dueMins + " minutes.</p>";
             $("#result").html(info);
           })
           .catch(error => console.log(error));
