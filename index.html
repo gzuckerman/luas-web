@@ -37,7 +37,7 @@
             var destination = direction.find("destination").first().text();
             var dueMins = direction.find("dueMins").first().text();
             
-            var info = "<p>The next Luas from " + station + " to " + destination + " is in " + dueMins + " minutes.</p>";
+            var info = "<p>The next Luas from " + option + " to " + destination + " is in " + dueMins + " minutes.</p>";
             $("#result").html(info);
           })
           .catch(error => console.log(error));
