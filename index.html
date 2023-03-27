@@ -25,6 +25,7 @@
       $(document).ready(function() {
         $("#submit-btn").click(function() {
           var station = $("#station-select").val();
+          var stationFull = $("#station-select").option();
           var url = "https://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=" + station + "&encrypt=false";
           
           fetch(url, {
@@ -37,7 +38,7 @@
             var destination = direction.find("destination").first().text();
             var dueMins = direction.find("dueMins").first().text();
             
-            var info = "<p>The next Luas from " + option + " to " + destination + " is in " + dueMins + " minutes.</p>";
+            var info = "<p>The next Luas from " + stationFull + " to " + destination + " is in " + dueMins + " minutes.</p>";
             $("#result").html(info);
           })
           .catch(error => console.log(error));
